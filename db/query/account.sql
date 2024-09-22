@@ -19,4 +19,14 @@ ORDER BY id
 LIMIT $1
 OFFSET $2;
 
+-- name: UpdateAccount :one
+UPDATE accounts
+SET balance = $2
+WHERE id = $1
+RETURNING *;
+
+-- name: DeleteAccount :exec
+DELETE FROM accounts
+WHERE id = $1;
+
 
